@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import categories from "../../data/categories";
 import { Link } from "react-router-dom";
 import MegaMenu from "./MegaMenu";
+import { IoCartOutline } from "react-icons/io5";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const Navbar: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -66,7 +68,8 @@ const Navbar: React.FC = () => {
             : "transform -translate-x-full"
         } md:hidden`}
       >
-        <div className="p-4">
+        <div className="p-4 flex items-center justify-between">
+          <IoCartOutline size={30} color="red" />
           <button
             onClick={() => setIsSidebarOpen(false)}
             className="text-white text-2xl"
@@ -79,7 +82,7 @@ const Navbar: React.FC = () => {
             <div key={index} className="space-y-2">
               <div>
                 <button
-                  className="text-lg font-semibold hover:text-gray-400 w-full text-left"
+                  className="flex items-center justify-between text-lg font-semibold hover:text-gray-400 w-full text-left transition-all duration-500"
                   onClick={() =>
                     setActiveCategory(
                       activeCategory === navItem.categoryTitle
@@ -88,7 +91,20 @@ const Navbar: React.FC = () => {
                     )
                   }
                 >
-                  {navItem?.categoryTitle}
+                  {navItem?.categoryTitle}{" "}
+                  <span
+                    className={`transform transition-transform duration-500 ${
+                      activeCategory === navItem?.categoryTitle
+                        ? "rotate-180"
+                        : "rotate-0"
+                    }`}
+                  >
+                    {activeCategory !== navItem?.categoryTitle ? (
+                      <MdKeyboardArrowDown />
+                    ) : (
+                      <MdKeyboardArrowUp />
+                    )}
+                  </span>
                 </button>
               </div>
 
