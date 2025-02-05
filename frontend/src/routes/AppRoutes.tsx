@@ -16,6 +16,8 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import OrdersHistory from "../pages/client/OrdersHistory";
 import ReturnOrders from "../pages/admin/ReturnOrders";
 import Statistics from "../pages/admin/Statistics";
+import Register from "../pages/auth/Register";
+import Login from "../pages/auth/Login";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -26,6 +28,8 @@ const AppRoutes: React.FC = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Route>
       {/* client routes */}
       <Route path="/client" element={<ClientLayout />}>
